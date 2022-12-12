@@ -36,7 +36,7 @@ int main (void)
     
     // faut adapter le CRC16 utiliser par rapport au nombres d'octet
     // 0xFF si 1 octet, 0xFFFF pour 2 octets etc
-    int poly = 0xA001, CRC16 = 0, n=0, i, j, nb_octets, c, d;
+    int poly = 0x05, CRC16 = 0, n=0, i, j, nb_octets, c, d;
 
     //On rentre le nombre de bits et on déclare un tableau de taille 8*nombre d'octet
     printf("Entrer le nombre d'octet\n");
@@ -47,7 +47,7 @@ int main (void)
     //initialisation de CRC
 
     CRC16 = initCRC(nb_octets);
-
+    printf("CRCinit = 0x%x \npoly = 0x0%x \n", CRC16, poly);
     //on saisi la data
     printf("Entrer de la data\n");
     for ( i = 0 ; i<size ; i++)
@@ -66,6 +66,8 @@ int main (void)
         
         //convertir l'octet récupérer en entier pour faire le ou exclusif
         d = btoint(octet);
+
+        printf("d = %x\n", d);
 
         CRC16 = CRC16^d;
         
