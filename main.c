@@ -14,18 +14,7 @@ int btoint (int*tab)
 
 int initCRC (int nb_octets)
 {
-    int CRC = 0xFF, i, j;
-    if (nb_octets == 1)
-    {
-        return 0xFF;
-    }
-    for (j = 0 ; j<nb_octets-1 ; j++)
-    {
-        for (i =0  ; i < 8 ; i++)
-            CRC = CRC<<1;
-        CRC += 0xFF;
-    }
-
+    int CRC = pow (2, nb_octets*8)-1;
     return CRC;
 }
 
